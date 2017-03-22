@@ -1,6 +1,8 @@
 
 import requests
 
+
+SOURCE_REF = "<a href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search'/></a>"
 DEFAULT_USERAGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
 DEFAULT_FORMAT = "json"
 API_ROOT = "http://api.glassdoor.com/api/api.htm"
@@ -42,7 +44,7 @@ class GlassdoorClient:
 
         self.returnformat = kwargs.get("format", DEFAULT_FORMAT)
         self.useragent = kwargs.get("useragent", DEFAULT_USERAGENT)
-
+        print(SOURCE_REF)
 
     def job_progression(self, **kwargs):
         """
@@ -63,6 +65,7 @@ class GlassdoorClient:
 
         args = validargs.update(validopts)
         raw = self._process_request(args=args)
+
         return raw
 
 
